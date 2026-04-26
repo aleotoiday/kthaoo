@@ -1,0 +1,20 @@
+name: Locket
+desc: Unlock Gold
+icon: https://patexiungon.vercel.app/Assets/Icon/Locket.JPG
+
+http:
+  mitm:
+    - api.revenuecat.com
+
+  script:
+    - match: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)
+      name: Locket
+      type: response
+      require-body: true
+      max-size: -1
+      timeout: 60
+
+script-providers:
+  Locket:
+    url: https://kthaoo.vercel.app/locket.js
+    interval: 86400
