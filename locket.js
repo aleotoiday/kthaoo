@@ -1,19 +1,5 @@
-var aleoo = JSON.parse($response.body);
-aleoo.subscriber.entitlements = {
-  "Gold": {
-    "expires_date": "2099-01-01T09:09:09Z",
-    "product_identifier": "locket_6000_1y",
-    "purchase_date": "2008-08-23T02:33:33Z"
-  }
+const mapping = {
+  'Locket': ['Gold']
 };
-aleoo.subscriber.original_purchase_date = "2008-08-23T02:33:33Z";
-aleoo.subscriber.subscriptions = {
-  "locket_6000_1y": {
-    "expires_date": "2099-01-01T09:09:09Z",
-    "original_purchase_date": "2008-08-23T02:33:33Z",
-    "purchase_date": "2008-08-23T02:33:33Z",
-    "ownership_type" : "PURCHASED",
-    "store" : "app_store"
-  }
-};
-$done({ body: JSON.stringify(aleoo) });
+
+var ua=$request.headers["User-Agent"]||$request.headers["user-agent"],obj=JSON.parse($response.body);obj.Attention="hihi";var locket02={is_sandbox:!1,ownership_type:"PURCHASED",billing_issues_detected_at:null,period_type:"normal",expires_date:"2099-01-01T01:05:16Z",grace_period_expires_date:null,unsubscribe_detected_at:null,original_purchase_date:"2008-08-23T01:05:19Z",purchase_date:"2008-08-23T01:05:19Z",store:"app_store"},locket01={grace_period_expires_date:null,purchase_date:"2008-08-23T01:05:19Z",product_identifier:"com.locket02.premium.yearly",expires_date:"2099-01-01T01:05:16Z"};const match=Object.keys(mapping).find(e=>ua.includes(e));if(match){let[e,s]=mapping[match];s?(locket01.product_identifier=s,obj.subscriber.subscriptions[s]=locket02):obj.subscriber.subscriptions["com.locket02.premium.yearly"]=locket02,obj.subscriber.entitlements[e]=locket01}else obj.subscriber.subscriptions["com.locket02.premium.yearly"]=locket02,obj.subscriber.entitlements.pro=locket01;$done({body:JSON.stringify(obj)});
