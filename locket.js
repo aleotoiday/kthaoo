@@ -1,5 +1,5 @@
 const mapping = {
-  'Locket': ['Gold']
+  'Locket': ['Gold'],
   'VSCO': ['pro']
 };
 
